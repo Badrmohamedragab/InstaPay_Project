@@ -1,6 +1,4 @@
 package DataBase;
-import java.util.List;
-import java.util.Map;
 
 public class AccountNumbers {
 
@@ -29,7 +27,4 @@ public class AccountNumbers {
 		throw new UnsupportedOperationException();
 	}
 
-	public void setAccounts(Map<String, String> accounts) {
-		this.accounts = accounts;
-	}
 }

@@ -1,13 +1,12 @@
-package Wallet;
+package Provider;
 
 import APIs.*;
 import User.*;
 
-public class Wallet {
-	private WalletAPI API;
+public abstract class Bank extends Provider {
 
-	public WalletAPI getAPI() {
-		// TODO - implement Wallet.getAPI
+	public API getAPI() {
+		// TODO - implement Bank.getAPI
 		throw new UnsupportedOperationException();
 	}
 
@@ -15,8 +14,8 @@ public class Wallet {
 	 * 
 	 * @param api
 	 */
-	public void setAPI(WalletAPI api) {
-		// TODO - implement Wallet.setAPI
+	public void setAPI(API api) {
+		// TODO - implement Bank.setAPI
 		throw new UnsupportedOperationException();
 	}
 
@@ -26,7 +25,7 @@ public class Wallet {
 	 * @param amount
 	 */
 	public void increaseBalance(User user, double amount) {
-		// TODO - implement Wallet.increaseBalance
+		// TODO - implement Bank.increaseBalance
 		throw new UnsupportedOperationException();
 	}
 
@@ -36,7 +35,7 @@ public class Wallet {
 	 * @param amount
 	 */
 	public void decreaseBalance(User user, double amount) {
-		// TODO - implement Wallet.decreaseBalance
+		// TODO - implement Bank.decreaseBalance
 		throw new UnsupportedOperationException();
 	}
 

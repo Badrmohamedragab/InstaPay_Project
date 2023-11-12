@@ -1,6 +1,9 @@
 package Bills;
 
 public enum PaymentStatus {
-	PAYED,
-	PENDING
+	;
+
+	private int Payed;
+	private int Pending;
+
 }

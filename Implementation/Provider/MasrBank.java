@@ -1,4 +1,4 @@
-package Bank;
+package Provider;
 
 public class MasrBank extends Bank {
 }

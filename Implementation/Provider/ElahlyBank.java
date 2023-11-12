@@ -1,4 +1,4 @@
-package Bank;
+package Provider;
 
 public class ElahlyBank extends Bank {
 }

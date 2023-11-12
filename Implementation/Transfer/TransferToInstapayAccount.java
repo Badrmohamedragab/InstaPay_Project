@@ -2,7 +2,7 @@ package Transfer;
 
 import User.*;
 
-public class TransferToInstapayAccount implements TransferProcess{
+public class TransferToInstapayAccount implements TransferProcess {
 
 	/**
 	 * 
@@ -12,7 +12,6 @@ public class TransferToInstapayAccount implements TransferProcess{
 	 */
 	public boolean transfer(User from, User to, double amount) {
 		// TODO - implement TransferToInstapayAccount.transfer
-
 		throw new UnsupportedOperationException();
 	}
 

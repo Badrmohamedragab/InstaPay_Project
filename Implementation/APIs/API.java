@@ -2,7 +2,7 @@ package APIs;
 
 import User.*;
 
-public class API {
+public abstract class API {
 
 	/**
 	 * 

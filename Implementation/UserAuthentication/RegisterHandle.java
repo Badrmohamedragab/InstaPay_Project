@@ -1,5 +1,6 @@
 package UserAuthentication;
-import Account.Account;
+
+import Account.*;
 
 public class RegisterHandle {
 

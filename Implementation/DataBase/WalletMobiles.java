@@ -1,7 +1,5 @@
 package DataBase;
 
-import java.util.List;
-
 public class WalletMobiles {
 
 	private List<String> walletMobles;

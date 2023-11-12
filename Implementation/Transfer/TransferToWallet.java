@@ -2,7 +2,7 @@ package Transfer;
 
 import User.*;
 
-public class TransferToWallet implements TransferProcess{
+public class TransferToWallet implements TransferProcess {
 
 	/**
 	 * 

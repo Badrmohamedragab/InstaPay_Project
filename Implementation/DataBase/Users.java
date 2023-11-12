@@ -1,8 +1,5 @@
 package DataBase;
 
-import User.User;
-import java.util.List;
-
 public class Users {
 
 	private List<User> users() {

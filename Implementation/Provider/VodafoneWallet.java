@@ -1,4 +1,4 @@
-package Wallet;
+package Provider;
 
 public class VodafoneWallet extends Wallet {
 }
