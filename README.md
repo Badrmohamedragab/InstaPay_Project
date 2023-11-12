@@ -46,4 +46,3 @@ Welcome to the InstaPay Project! This application is designed to provide users w
 7. **Transfer:** Facilitates fund transfers between users and accounts.
 8. **Account:** Handles account-related functionalities.
 
-Feel free to explore the individual packages for more details on their functionalities and implementations. Happy coding!
