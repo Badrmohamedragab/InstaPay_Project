@@ -1,26 +1,32 @@
 package DataBase;
+
+import Account.Account;
 import User.User;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Users {
 
-	private List<User> users() {
-		// TODO - implement Users.users
-		throw new UnsupportedOperationException();
-	}
+	public Users() throws SQLException {
+		users=DBHandle.getDbConnecton().fillUsersList();
 
+	}
+	private List<User> users;
 	public List<User> getUsers() {
-		// TODO - implement Users.getUsers
-		throw new UnsupportedOperationException();
+		return users;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param userName
 	 */
-	public User ifUserExist(String userName) {
-		// TODO - implement Users.ifUserExist
-		throw new UnsupportedOperationException();
-	}
+
 
 }
+
+
+
+

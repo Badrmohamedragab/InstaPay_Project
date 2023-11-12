@@ -6,6 +6,10 @@ public class User {
 
 	private Account account;
 
+	public User(Account account) {
+		this.account = account;
+	}
+
 	/**
 	 * 
 	 * @param account

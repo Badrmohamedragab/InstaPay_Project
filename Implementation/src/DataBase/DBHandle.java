@@ -1,8 +1,14 @@
 package DataBase;
+import User.User;
+import java.util.List;
 
 public class DBHandle {
 
-	private DBConnection dbConnecton;
+	private static DBConnection dbConnecton;
+
+	public static DBConnection getDbConnecton() {
+		return dbConnecton;
+	}
 
 	/**
 	 * 
@@ -16,6 +22,9 @@ public class DBHandle {
 	public DBConnection getDB() {
 		// TODO - implement DBHandle.getDB
 		throw new UnsupportedOperationException();
+	}
+	public List<User> fillUsersList(){
+		return dbConnecton.fillUsersList();
 	}
 
 }
