@@ -4,6 +4,7 @@ import Account.*;
 
 public class User {
 
+	private Account attribute;
 	private Account account;
 
 	/**

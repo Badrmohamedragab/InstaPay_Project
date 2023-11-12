@@ -5,6 +5,7 @@ import User.*;
 
 public class Bank {
 
+	private BankAPI attribute;
 	private BankAPI API;
 
 	public BankAPI getAPI() {

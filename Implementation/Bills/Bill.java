@@ -6,6 +6,7 @@ public class Bill {
 	private double billid;
 	private double amount;
 	private Date date;
+	private PaymentStatus attribute;
 	private PaymentStatus status;
 
 }

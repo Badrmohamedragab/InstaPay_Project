@@ -4,6 +4,7 @@ import Wallet.*;
 
 public class WalletAccount extends Account {
 
+	private Wallet attribute;
 	private Wallet wallet;
 
 	/**

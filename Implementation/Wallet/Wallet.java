@@ -5,6 +5,7 @@ import User.*;
 
 public class Wallet {
 
+	private WalletAPI attribute;
 	private WalletAPI API;
 
 	public WalletAPI getAPI() {

@@ -5,6 +5,7 @@ import Bank.*;
 public class BankAccount extends Account {
 
 	private String accountNumber;
+	private Bank attribute;
 	private Bank bank;
 
 	/**
@@ -16,8 +17,8 @@ public class BankAccount extends Account {
 		throw new UnsupportedOperationException();
 	}
 
-	public Bank getBank() {
-		return this.bank;
+	public Bank getAttribute() {
+		return this.attribute;
 	}
 
 	public void getAccountNumber() {
@@ -31,6 +32,11 @@ public class BankAccount extends Account {
 	 */
 	public void setAccountNumber(String accountNumber) {
 		// TODO - implement BankAccount.setAccountNumber
+		throw new UnsupportedOperationException();
+	}
+
+	public Bank getBank() {
+		// TODO - implement BankAccount.getBank
 		throw new UnsupportedOperationException();
 	}
 

@@ -5,7 +5,7 @@ public class RegisterHandle {
 
 	/**
 	 * 
-	 * @param userInformation
+	 * @param account
 	 */
 	public void register(Account account) {
 		// TODO - implement RegisterHandle.register
