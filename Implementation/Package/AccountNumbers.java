@@ -7,6 +7,10 @@ public class AccountNumbers {
 
 	private Map<String, String> accounts;
 
+	public void setAccounts(Map<String, String> accounts) {
+		this.accounts = accounts;
+	}
+
 	public List<String> getAccounts() {
 		// TODO - implement AccountNumbers.getAccounts
 		throw new UnsupportedOperationException();

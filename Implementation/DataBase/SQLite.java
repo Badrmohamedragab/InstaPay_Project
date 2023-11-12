@@ -6,5 +6,4 @@ public class SQLite implements DBConnection {
 		// TODO - implement SQLite.initializeDB
 		throw new UnsupportedOperationException();
 	}
-
 }

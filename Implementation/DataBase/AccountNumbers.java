@@ -29,4 +29,7 @@ public class AccountNumbers {
 		throw new UnsupportedOperationException();
 	}
 
+	public void setAccounts(Map<String, String> accounts) {
+		this.accounts = accounts;
+	}
 }
