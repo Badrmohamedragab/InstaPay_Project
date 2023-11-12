@@ -1,4 +1,5 @@
 package DataBase;
+import java.sql.Connection;
 
 public class SQLite implements DBConnection {
 

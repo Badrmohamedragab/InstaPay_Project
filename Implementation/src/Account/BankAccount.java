@@ -4,7 +4,7 @@ public class BankAccount extends Account {
 
 	private String accountNumber;
 
-	public void getAccountNumber() {
+	public String getAccountNumber() {
 		// TODO - implement BankAccount.getAccountNumber
 		throw new UnsupportedOperationException();
 	}
@@ -13,7 +13,7 @@ public class BankAccount extends Account {
 	 * 
 	 * @param accountNumber
 	 */
-	public String setAccountNumber(String accountNumber) {
+	public void setAccountNumber(String accountNumber) {
 		// TODO - implement BankAccount.setAccountNumber
 		throw new UnsupportedOperationException();
 	}
