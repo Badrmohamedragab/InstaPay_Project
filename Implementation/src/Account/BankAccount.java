@@ -3,19 +3,22 @@ package Account;
 public class BankAccount extends Account {
 
 	private String accountNumber;
-
+	@Override
 	public String getAccountNumber() {
 		// TODO - implement BankAccount.getAccountNumber
-		throw new UnsupportedOperationException();
+		return accountNumber;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param accountNumber
 	 */
+	@Override
 	public void setAccountNumber(String accountNumber) {
 		// TODO - implement BankAccount.setAccountNumber
-		throw new UnsupportedOperationException();
+		this.accountNumber = accountNumber;
 	}
+
+
 
 }

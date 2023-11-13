@@ -42,23 +42,24 @@ public abstract class Account {
 		this.mobileNumber = mobileNumber;
 	}
 
+	/**
+	 *
+	 * @param accountNumber
+	 */
+
+	public void setAccountNumber(String accountNumber){
+		throw new UnsupportedOperationException();
+	}
+
 	public double getBalance() {
 		return this.balance;
 	}
 
-	public double getPassword() {
+	public String getPassword() {
 		// TODO - implement Account.getPassword
-		throw new UnsupportedOperationException();
+		return password;
 	}
 
-	/**
-	 * 
-	 * @param bank
-	 */
-	public void setBank(Bank bank) {
-		// TODO - implement Account.setBank
-		throw new UnsupportedOperationException();
-	}
 
 	public String getAccountNumber() {
 		// TODO - implement Account.getAccountNumber
