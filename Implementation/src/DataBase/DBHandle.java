@@ -15,41 +15,44 @@ public class DBHandle {
     /**
      * @param db
      */
-    public void setDB(DBConnection db) {
+    public static void setDB(DBConnection db) {
         dbConnecton=db;
     }
 
 
 
-    public List<User> fillUsersList() {
+    public static List<User> fillUsersList() {
         return dbConnecton.fillUsersList();
     }
 
-    public User ifUserExist(String userName) {
+    public static boolean ifUserExist(String userName) {
         return dbConnecton.ifUserExist(userName);
     }
 
-    public void increaseBalance(User user, double amount) {
+    public static void increaseBalance(User user, double amount) {
         dbConnecton.increaseBalance(user, amount);
     }
 
-    public void decreaseBalance(User user, double amount) {
+    public static void decreaseBalance(User user, double amount) {
         dbConnecton.decreaseBalance(user, amount);
     }
 
-    public boolean isWalletExist(String mobileNumber) {
+    public static boolean isWalletExist(String mobileNumber) {
         return dbConnecton.isWalletExist(mobileNumber);
     }
 
-    public boolean ifMobileNumberLocateToAccount(String accountNumber, String mobileNumber) {
+    public static boolean ifMobileNumberLocateToAccount(String accountNumber, String mobileNumber) {
         return dbConnecton.ifMobileNumberLocateToAccount(accountNumber, mobileNumber);
     }
 
-    public void addUser(User user){
+    public static void addUser(User user){
         dbConnecton.addUser(user);
-    }public boolean ifPasswordCorrect(String userName, String Password){
+    }public static boolean ifPasswordCorrect(String userName, String Password){
         return dbConnecton.ifPasswordCorrect(userName,Password);
     }
 
+    public static User loadUser(String userName){
+        return dbConnecton.loadUser(userName);
+    }
 
 }

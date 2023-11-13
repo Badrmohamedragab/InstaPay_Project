@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DBConnection {
 	public List<User> fillUsersList();
-	public User ifUserExist(String userName);
+	public boolean ifUserExist(String userName);
 	public void increaseBalance(User user,double amount);
 	public void decreaseBalance(User user,double amount);
 	public boolean isWalletExist(String mobileNumber);
@@ -14,6 +14,7 @@ public interface DBConnection {
 
 	public void addUser(User user);
 	public boolean ifPasswordCorrect(String userName, String Password);
+	public User loadUser(String userName);
 	void initializeDB();
 
 }

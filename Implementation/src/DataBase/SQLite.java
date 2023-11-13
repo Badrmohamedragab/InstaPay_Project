@@ -84,7 +84,7 @@ public class SQLite implements DBConnection {
     }
 
     @Override
-    public User ifUserExist(String userName) {
+    public boolean ifUserExist(String userName) {
         User retrievedUser = null;
         String getUser = "SELECT * FROM users WHERE username = ?";
 
@@ -93,18 +93,14 @@ public class SQLite implements DBConnection {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-
-                retrievedUser = new User(
-                        resultSet.getString("username"),
-                        resultSet.getString("password"),
-                        resultSet.getDouble("balance"),
-                        resultSet.getString("mobile_number")
-                );
+                return true;
+            }else{
+                return false;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return retrievedUser;
+
     }
 
     public void increaseBalance(User user, double amount) {
@@ -202,6 +198,29 @@ public class SQLite implements DBConnection {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public User loadUser(String userName) {
+        User retrievedUser = null;
+        String getUser = "SELECT * FROM users WHERE username = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(getUser)) {
+            statement.setString(1, userName);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+
+                retrievedUser = new User(
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getDouble("balance"),
+                        resultSet.getString("mobile_number")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return retrievedUser;
     }
 
 }
