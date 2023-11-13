@@ -13,7 +13,7 @@ public class TransferToWallet implements TransferTo {
 	 * @param amount
 	 */
 	public boolean transfer(User from, String to, double amount) {
-		if(!DBHandle.mobileExist(to)){
+		if(!DBHandle.ifWalletExist(to)){
 			return false;
 		}
 		if(from.getAccount().getBalance() >= amount){

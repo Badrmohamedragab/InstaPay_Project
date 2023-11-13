@@ -1,9 +1,7 @@
 package Account;
-
 import Provider.*;
 
 public abstract class Account {
-
 	private double balance;
 	private String password;
 	private String userName;
@@ -64,13 +62,11 @@ public abstract class Account {
 	}
 
 	public String getPassword() {
-		// TODO - implement Account.getPassword
 		return password;
 	}
 
 
 	public String getAccountNumber() {
-		// TODO - implement Account.getAccountNumber
 		throw new UnsupportedOperationException();
 	}
 

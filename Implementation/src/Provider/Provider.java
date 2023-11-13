@@ -30,8 +30,7 @@ public abstract class Provider {
 	 */
 	 public void increaseBalance(User user, double amount)
 	 {
-//		 DBHandle DB = new DBHandle();
-//		 DB.increaseBalance(user, amount);
+//		 DBHandle.increaseBalance(user, amount);
 		 user.getAccount().setBalance(user.getAccount().getBalance() + amount);
 	 }
 
@@ -43,8 +42,7 @@ public abstract class Provider {
 	 */
 	 public void decreaseBalance(User user, double amount)
 	 {
-//		 DBHandle DB = new DBHandle();
-//		 DB.decreaseBalance(user, amount);
+//		 DBHandle.decreaseBalance(user, amount);
 		 user.getAccount().setBalance(user.getAccount().getBalance() - amount);
 
 	 }

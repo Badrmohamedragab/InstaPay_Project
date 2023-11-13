@@ -25,6 +25,4 @@ public class TransferToBankAccount implements TransferToInstapayAccount{
         return false;
 
     }
-
-
 }
