@@ -168,6 +168,24 @@ public class SQLite implements DBConnection {
             throw new RuntimeException(e);
         }
     }
+    public boolean ifPasswordCorrect(String userName, String Password) {
+
+        String isWalletExist = "select * from users where username=? and password=?";
+        try (PreparedStatement statement = connection.prepareStatement(isWalletExist)) {
+            statement.setString(1, userName);
+            statement.setString(2, Password);
+            ResultSet resultSet = statement.executeQuery();
+
+
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public void addUser(User user) {

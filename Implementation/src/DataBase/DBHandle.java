@@ -47,6 +47,8 @@ public class DBHandle {
 
     public void addUser(User user){
         dbConnecton.addUser(user);
+    }public boolean ifPasswordCorrect(String userName, String Password){
+        return dbConnecton.ifPasswordCorrect(userName,Password);
     }
 
 

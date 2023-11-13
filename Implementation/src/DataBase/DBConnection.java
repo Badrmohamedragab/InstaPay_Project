@@ -13,6 +13,7 @@ public interface DBConnection {
 	public boolean ifMobileNumberLocateToAccount(String accountNumber,String mobileNumber);
 
 	public void addUser(User user);
+	public boolean ifPasswordCorrect(String userName, String Password);
 	void initializeDB();
 
 }
