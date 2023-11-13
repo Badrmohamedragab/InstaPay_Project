@@ -1,8 +1,7 @@
 package Transfer;
+import User.User;
 
-import User.*;
-
-public class TransferToWallet implements TransferProcess {
+public class TransferToWallet implements TransferTo {
 
 	/**
 	 * 
@@ -10,7 +9,7 @@ public class TransferToWallet implements TransferProcess {
 	 * @param to
 	 * @param amount
 	 */
-	public boolean transfer(User from, User to, double amount) {
+	public boolean transfer(User from, String to, double amount) {
 		// TODO - implement TransferToWallet.transfer
 		throw new UnsupportedOperationException();
 	}

@@ -1,8 +1,7 @@
 package Transfer;
+import User.User;
 
-import User.*;
-
-public class TransferToInstapayAccount implements TransferProcess {
+public interface TransferToInstapayAccount {
 
 	/**
 	 * 
@@ -10,9 +9,5 @@ public class TransferToInstapayAccount implements TransferProcess {
 	 * @param to
 	 * @param amount
 	 */
-	public boolean transfer(User from, User to, double amount) {
-		// TODO - implement TransferToInstapayAccount.transfer
-		throw new UnsupportedOperationException();
-	}
-
+	boolean transfer(User from, User to, double amount);
 }
