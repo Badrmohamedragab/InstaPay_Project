@@ -80,7 +80,87 @@ public class SQLite implements DBConnection {
 
     @Override
     public User ifUserExist(String userName) {
-        return null;
+        User retrievedUser = null;
+        String getUser = "SELECT * FROM users WHERE username = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(getUser)) {
+            statement.setString(1, userName);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+
+                retrievedUser = new User(
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getDouble("balance"),
+                        resultSet.getString("mobile_number")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return retrievedUser;
+    }
+
+    public void increaseBalance(User user,double amount){
+        String updateUserBalance="update users set balance=balance + ? where username = ?";
+        try (PreparedStatement statement = connection.prepareStatement(updateUserBalance)) {
+            statement.setDouble(1, amount);
+            statement.setString(2, user.getUsername());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void decreaseBalance(User user,double amount){
+        String updateUserBalance="update users set balance = balance + ? where username=?";
+        try (PreparedStatement statement=connection.prepareStatement(updateUserBalance)){
+            statement.setDouble(1,amount);
+            statement.setString(2,user.getUsername());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean isWalletExist(String mobileNumber){
+
+        String isWalletExist="select * from walletUsers where mobileNumber=?";
+        try (PreparedStatement statement=connection.prepareStatement(isWalletExist)){
+            statement.setString(1,mobileNumber);
+            ResultSet resultSet=statement.executeQuery();
+
+
+            if (resultSet.next()){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean ifMobileNumberLocateToAccount(String accountNumber,String mobileNumber){
+
+        String isWalletExist="select * from users where accountNumber=? and mobileNumber=?";
+        try (PreparedStatement statement=connection.prepareStatement(isWalletExist)){
+            statement.setString(1,accountNumber);
+            statement.setString(2,mobileNumber);
+            ResultSet resultSet=statement.executeQuery();
+
+
+            if (resultSet.next()){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

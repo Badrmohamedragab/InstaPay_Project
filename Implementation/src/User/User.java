@@ -10,6 +10,14 @@ public class User {
 		this.account = account;
 	}
 
+	public User(String username, String password, double balance, String mobileNumber) {
+
+		account.setBalance(balance);
+		account.setMobileNumber(mobileNumber);
+		account.setPassword(password);
+		account.setUserName(username);
+	}
+
 	/**
 	 * 
 	 * @param account
@@ -20,6 +28,11 @@ public class User {
 
 	public Account getAccount() {
 		return this.account;
+	}
+	public String getUsername() {
+		return this.account.getUsername();
+	}public String getMobileNumber() {
+		return this.account.getMobileNumber();
 	}
 
 }
