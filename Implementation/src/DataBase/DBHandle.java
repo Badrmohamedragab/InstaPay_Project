@@ -49,5 +49,9 @@ public class DBHandle {
         return dbConnecton.ifMobileNumberLocateToAccount(accountNumber, mobileNumber);
     }
 
+    public void addUser(User user){
+        dbConnecton.addUser(user);
+    }
+
 
 }

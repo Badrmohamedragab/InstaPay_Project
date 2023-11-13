@@ -12,6 +12,7 @@ public interface DBConnection {
 	public boolean isWalletExist(String mobileNumber);
 	public boolean ifMobileNumberLocateToAccount(String accountNumber,String mobileNumber);
 
+	public void addUser(User user);
 	void initializeDB();
 
 }
