@@ -1,5 +1,6 @@
 package UserAuthentication;
 import APIs.*;
+import DataBase.DBHandle;
 import User.User;
 import Account.*;
 import Provider.*;
@@ -41,8 +42,7 @@ public class RegisterHandle {
 
 		// Provider part
 		{
-			Provider provider = null;
-			API api = null ;
+			Provider provider;
 
 			System.out.print("""
                     Choose method to register
@@ -78,8 +78,7 @@ public class RegisterHandle {
 					provider = new VodafoneWallet() ;
 				}
 
-				api = new WalletAPI() ;
-				provider.setAPI(api);
+				provider.setAPI(new WalletAPI());
 				account.setProvider(provider);
 			}
 			else {
@@ -108,8 +107,7 @@ public class RegisterHandle {
 					provider = new CIBBank() ;
 				}
 
-				api = new BankAPI() ;
-				provider.setAPI(api);
+				provider.setAPI(new BankAPI());
 				account.setProvider(provider);
 				bankAccount = true;
 			}
@@ -144,12 +142,10 @@ public class RegisterHandle {
 			input = scanner.nextLine();
 
 			// if exist try again
-			/*
-			while(DBHandle.getDBConnection().ifUserExist(input)){
+			while(DBHandle.getDbConnecton().ifUserExist(input)){
 				System.out.print("The Username is token\nType your user name\n->");
 				input = scanner.nextLine();
 			}
-			 */
 			account.setUserName(input);
 
 			System.out.print("Type strong password\n->");
@@ -164,7 +160,7 @@ public class RegisterHandle {
 		}
 
 		account.setBalance(0);
-//		User user = new User(account) ;
-//		DBHandle.addUser(user).ifUserExist(input)
+		User user = new User(account) ;
+		DBHandle.addUser(user);
 	}
 }
