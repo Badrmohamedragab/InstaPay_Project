@@ -20,7 +20,7 @@ public class LoginHandle {
 	 * @param userName <strong style="color:'white'"> Represent the userName of the user</strong>
 	 * @param password <strong style="color:'white'"> Represent the password of the user</strong>
 	 */
-	public boolean login(String userName, String password) {
+	public static boolean login(String userName, String password) {
 		boolean exist = false ;
 		// exist = DBHandle.addUser(user).ifUserExist(userName) ;
 		// exist = exist && DBHandle.addUser(user).ifPasswordCorrect(userName, password) ;

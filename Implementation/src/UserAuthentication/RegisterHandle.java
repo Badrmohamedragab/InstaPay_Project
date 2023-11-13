@@ -33,7 +33,7 @@ public class RegisterHandle {
 	 *</pre>
 	 * @param account <strong style="color:'white'"> Represent the account will be registered</strong>
 	 */
-	public void register(Account account) {
+	public static void register(Account account) {
 		System.out.println("================= Register Stage =================");
 		Scanner scanner = new Scanner(System.in) ;
 		String input ;
