@@ -1,5 +1,8 @@
 package DataBase;
 
+import APIs.API;
+import APIs.BankAPI;
+import APIs.WalletAPI;
 import Account.*;
 import Provider.*;
 import User.*;
@@ -23,7 +26,7 @@ public class SQLite implements DBConnection {
     }
 
     public List<User> fillUsersList() {
-		List<User> users=new Vector<>();
+        List<User> users = new Vector<>();
         User retrievedUser = null;
         String getUser = "SELECT * FROM users";
         try (PreparedStatement statement = connection.prepareStatement(getUser)) {
@@ -34,8 +37,8 @@ public class SQLite implements DBConnection {
                 Account account = null;
                 Provider provider = null;
                 if (resultSet.getString("provider").contains("Wallet")) {
-
-
+                    API api = new WalletAPI();
+                    provider.setAPI(api);
                     if (resultSet.getString("provider").equals("EtisalatWallet")) {
                         provider = new EtisalatWallet();
                     } else if (resultSet.getString("provider").equals("VodafoneWallet")) {
@@ -48,8 +51,8 @@ public class SQLite implements DBConnection {
                             provider);
 
                 } else if (resultSet.getString("provider").contains("Bank")) {
-
-
+                    API api = new BankAPI();
+                    provider.setAPI(api);
                     if (resultSet.getString("provider").equals("ElahlyBank")) {
                         provider = new EtisalatWallet();
                     } else if (resultSet.getString("provider").equals("MisrBank")) {
@@ -67,11 +70,13 @@ public class SQLite implements DBConnection {
 
                 }
 
-				retrievedUser = new User(
-						account
-				);
-				users.add(retrievedUser);
+                retrievedUser = new User(
+                        account
+                );
+                users.add(retrievedUser);
+
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -102,8 +107,8 @@ public class SQLite implements DBConnection {
         return retrievedUser;
     }
 
-    public void increaseBalance(User user,double amount){
-        String updateUserBalance="update users set balance=balance + ? where username = ?";
+    public void increaseBalance(User user, double amount) {
+        String updateUserBalance = "update users set balance=balance + ? where username = ?";
         try (PreparedStatement statement = connection.prepareStatement(updateUserBalance)) {
             statement.setDouble(1, amount);
             statement.setString(2, user.getUsername());
@@ -115,11 +120,11 @@ public class SQLite implements DBConnection {
 
     }
 
-    public void decreaseBalance(User user,double amount){
-        String updateUserBalance="update users set balance = balance + ? where username=?";
-        try (PreparedStatement statement=connection.prepareStatement(updateUserBalance)){
-            statement.setDouble(1,amount);
-            statement.setString(2,user.getUsername());
+    public void decreaseBalance(User user, double amount) {
+        String updateUserBalance = "update users set balance = balance + ? where username=?";
+        try (PreparedStatement statement = connection.prepareStatement(updateUserBalance)) {
+            statement.setDouble(1, amount);
+            statement.setString(2, user.getUsername());
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -127,35 +132,17 @@ public class SQLite implements DBConnection {
         }
     }
 
-    public boolean isWalletExist(String mobileNumber){
+    public boolean isWalletExist(String mobileNumber) {
 
-        String isWalletExist="select * from walletUsers where mobileNumber=?";
-        try (PreparedStatement statement=connection.prepareStatement(isWalletExist)){
-            statement.setString(1,mobileNumber);
-            ResultSet resultSet=statement.executeQuery();
+        String isWalletExist = "select * from walletUsers where mobileNumber=?";
+        try (PreparedStatement statement = connection.prepareStatement(isWalletExist)) {
+            statement.setString(1, mobileNumber);
+            ResultSet resultSet = statement.executeQuery();
 
 
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 return true;
-            }else{
-                return false;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public boolean ifMobileNumberLocateToAccount(String accountNumber,String mobileNumber){
-
-        String isWalletExist="select * from users where accountNumber=? and mobileNumber=?";
-        try (PreparedStatement statement=connection.prepareStatement(isWalletExist)){
-            statement.setString(1,accountNumber);
-            statement.setString(2,mobileNumber);
-            ResultSet resultSet=statement.executeQuery();
-
-
-            if (resultSet.next()){
-                return true;
-            }else{
+            } else {
                 return false;
             }
         } catch (SQLException e) {
@@ -163,5 +150,40 @@ public class SQLite implements DBConnection {
         }
     }
 
+    public boolean ifMobileNumberLocateToAccount(String accountNumber, String mobileNumber) {
+
+        String isWalletExist = "select * from users where accountNumber=? and mobileNumber=?";
+        try (PreparedStatement statement = connection.prepareStatement(isWalletExist)) {
+            statement.setString(1, accountNumber);
+            statement.setString(2, mobileNumber);
+            ResultSet resultSet = statement.executeQuery();
+
+
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void addUser(User user) {
+        String insertUser = "insert into users (username, mobile_number, balance, password, provider, account_number) values(?,?,?,?,?,?)";
+        try (PreparedStatement statement = connection.prepareStatement(insertUser)) {
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getMobileNumber());
+            statement.setDouble(3, user.getBalance());
+            statement.setString(4, user.getPassword());
+            statement.setString(5, user.getProvider());
+            statement.setString(6, user.accountNumber());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

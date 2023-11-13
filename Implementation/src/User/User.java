@@ -33,6 +33,14 @@ public class User {
 		return this.account.getUsername();
 	}public String getMobileNumber() {
 		return this.account.getMobileNumber();
+	}public double getBalance() {
+		return this.account.getBalance();
+	}public String getPassword() {
+		return this.account.getPassword();
+	}public String getProvider() {
+		return this.account.getProvider();
+	}public String accountNumber() {
+		return this.account.getAccountNumber();
 	}
 
 }
