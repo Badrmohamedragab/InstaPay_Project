@@ -2,24 +2,26 @@ package APIs;
 
 import User.*;
 
+import java.util.Random;
+
 public abstract class API {
 
 	/**
 	 * 
 	 * @param user
 	 */
-	public boolean validate(User user) {
-		// TODO - implement API.validate
-		throw new UnsupportedOperationException();
-	}
+	abstract public boolean validate(User user) ;
 
 	/**
 	 * 
 	 * @param number
 	 */
+
 	public void sendOTP(String number) {
-		// TODO - implement API.sendOTP
-		throw new UnsupportedOperationException();
+		Random random = new Random();
+		int randomNumber = 1000 + random.nextInt(9000);
+		System.out.print("Sending OTP to this Number : " + number + "\nOTP : " + randomNumber);
+
 	}
 
 }
