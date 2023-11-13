@@ -1,4 +1,5 @@
 package UserAuthentication;
+import User.*;
 
 /**
  *<pre>
@@ -6,7 +7,7 @@ package UserAuthentication;
  *</pre>
  * <blockquote></blockquote>
  * @author <strong style="color:'white'"> Mohamed Amir</strong>
- * @version  <strong style="color:'white'"> 1.0</strong>
+ * @version  <strong style="color:'white'"> 1.1</strong>
  */
 public class LoginHandle {
 
@@ -20,10 +21,15 @@ public class LoginHandle {
 	 * @param userName <strong style="color:'white'"> Represent the userName of the user</strong>
 	 * @param password <strong style="color:'white'"> Represent the password of the user</strong>
 	 */
-	public static boolean login(String userName, String password) {
+	public static User login(User user) {
 		boolean exist = false ;
-		// exist = DBHandle.addUser(user).ifUserExist(userName) ;
-		// exist = exist && DBHandle.addUser(user).ifPasswordCorrect(userName, password) ;
-		return exist ;
+		exist = DBHandle.ifUserExist(user.getAccount().getUserName()) ;
+		exist = exist && DBHandle.ifPasswordCorrect(user.getAccount().getUserName(), user.getAccount().getPassword()) ;
+
+		if (exist){
+			return DBHandle.loadProfile(user.getAccount().getUserName()) ;
+		}
+
+		return null ;
 	}
 }
