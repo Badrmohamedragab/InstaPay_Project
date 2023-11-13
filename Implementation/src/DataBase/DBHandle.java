@@ -2,7 +2,7 @@ package DataBase;
 
 public class DBHandle {
 
-	private DBConnection dbConnecton;
+	private static DBConnection dbConnecton;
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class DBHandle {
 		throw new UnsupportedOperationException();
 	}
 
-	public DBConnection getDB() {
+	public static DBConnection getDB() {
 		// TODO - implement DBHandle.getDB
 		throw new UnsupportedOperationException();
 	}
