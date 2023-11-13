@@ -14,7 +14,7 @@ public class TransferToBankAccount implements TransferToInstapayAccount{
      */
     @Override
     public boolean transfer(User from, User to, double amount) {
-        if(!DBHandle.ifUserExist(to)){
+        if(!DBHandle.ifUserExist(to.getAccount().getUserName())){
             return false;
         }
         if(from.getAccount() instanceof BankAccount && from.getAccount().getBalance() >= amount){

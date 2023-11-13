@@ -122,10 +122,9 @@ public class RegisterHandle {
 			if (bankAccount){
 				System.out.print("Type your account number\n->");
 				input = scanner.nextLine() ;
-//				account.setAccountNumber(input);
+				account.setAccountNumber(input);
 			}
-			User user = new User() ;
-			user.setAccount(account);
+			User user = new User(account) ;
 
 			if(!account.getProvider().getAPI().validate(user) && !bankAccount){
 				System.err.println("Your mobile doesn't exist in the wallet provider");
@@ -142,7 +141,7 @@ public class RegisterHandle {
 			input = scanner.nextLine();
 
 			// if exist try again
-			while(DBHandle.getDbConnecton().ifUserExist(input)){
+			while(DBHandle.ifUserExist(input)){
 				System.out.print("The Username is token\nType your user name\n->");
 				input = scanner.nextLine();
 			}

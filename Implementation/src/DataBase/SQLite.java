@@ -1,12 +1,8 @@
 package DataBase;
-
-import APIs.API;
-import APIs.BankAPI;
-import APIs.WalletAPI;
+import APIs.*;
 import Account.*;
 import Provider.*;
 import User.*;
-
 import java.sql.*;
 import java.util.List;
 import java.util.Vector;
@@ -107,7 +103,7 @@ public class SQLite implements DBConnection {
         String updateUserBalance = "update users set balance=balance + ? where username = ?";
         try (PreparedStatement statement = connection.prepareStatement(updateUserBalance)) {
             statement.setDouble(1, amount);
-            statement.setString(2, user.getUsername());
+            statement.setString(2, user.getAccount().getUsername());
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -120,7 +116,7 @@ public class SQLite implements DBConnection {
         String updateUserBalance = "update users set balance = balance + ? where username=?";
         try (PreparedStatement statement = connection.prepareStatement(updateUserBalance)) {
             statement.setDouble(1, amount);
-            statement.setString(2, user.getUsername());
+            statement.setString(2, user.getAccount().getUsername());
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -186,16 +182,17 @@ public class SQLite implements DBConnection {
 
     public void addUser(User user) {
         String insertUser = "insert into users (username, mobile_number, balance, password, provider, account_number) values(?,?,?,?,?,?)";
-        String providerStr ;
-        Provider provider = user.getProvider() ;
+        Provider provider = user.getAccount().getProvider();
+        String className = provider.getClass().toString();
+        String providerStr = className.substring(className.indexOf('.') + 1) ;
 
         try (PreparedStatement statement = connection.prepareStatement(insertUser)) {
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getMobileNumber());
-            statement.setDouble(3, user.getBalance());
-            statement.setString(4, user.getPassword());
-            statement.setString(5, );
-            statement.setString(6, user.accountNumber());
+            statement.setString(1, user.getAccount().getUsername());
+            statement.setString(2, user.getAccount().getMobileNumber());
+            statement.setDouble(3, user.getAccount().getBalance());
+            statement.setString(4, user.getAccount().getPassword());
+            statement.setString(5, providerStr);
+            statement.setString(6, user.getAccount().getAccountNumber());
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -212,18 +209,26 @@ public class SQLite implements DBConnection {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-
-                retrievedUser = new User(
-                        resultSet.getString("username"),
+                Account account = new WalletAccount(resultSet.getDouble("balance"),
                         resultSet.getString("password"),
-                        resultSet.getDouble("balance"),
-                        resultSet.getString("mobile_number")
-                );
+                        resultSet.getString("username"),
+                        resultSet.getString("mobile_number"),
+                        new EtisalatWallet());
+
+                if (resultSet.getString("accountNumber") != null){
+                    account = new BankAccount(resultSet.getDouble("balance"),
+                            resultSet.getString("password"),
+                            resultSet.getString("username"),
+                            resultSet.getString("mobile_number"),
+                            new CIBBank(),
+                            resultSet.getString("accountNumber")) ;
+                }
+                retrievedUser = new User(account);
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return retrievedUser;
     }
-
 }

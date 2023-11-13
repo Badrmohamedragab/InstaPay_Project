@@ -19,8 +19,6 @@ public class DBHandle {
         dbConnecton=db;
     }
 
-
-
     public static List<User> fillUsersList() {
         return dbConnecton.fillUsersList();
     }
@@ -48,6 +46,7 @@ public class DBHandle {
     public static void addUser(User user){
         dbConnecton.addUser(user);
     }
+
     public static boolean ifPasswordCorrect(String userName, String Password){
         return dbConnecton.ifPasswordCorrect(userName,Password);
     }

@@ -12,7 +12,7 @@ public class TransferToWalletAccount implements TransferToInstapayAccount {
 	 * @param amount
 	 */
 	public boolean transfer(User from, User to, double amount) {
-		if(!DBHandle.ifUserExist(to)){
+		if(!DBHandle.ifUserExist(to.getAccount().getUserName())){
 			return false;
 		}
 		if(from.getAccount().getBalance() >= amount){

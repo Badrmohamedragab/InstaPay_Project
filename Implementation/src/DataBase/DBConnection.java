@@ -11,10 +11,8 @@ public interface DBConnection {
 	public void decreaseBalance(User user,double amount);
 	public boolean isWalletExist(String mobileNumber);
 	public boolean ifMobileNumberLocateToAccount(String accountNumber,String mobileNumber);
-
 	public void addUser(User user);
 	public boolean ifPasswordCorrect(String userName, String Password);
 	public User loadUser(String userName);
 	void initializeDB();
-
 }
