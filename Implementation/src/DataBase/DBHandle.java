@@ -16,14 +16,10 @@ public class DBHandle {
      * @param db
      */
     public void setDB(DBConnection db) {
-        // TODO - implement DBHandle.setDB
-        throw new UnsupportedOperationException();
+        dbConnecton=db;
     }
 
-    public DBConnection getDB() {
-        // TODO - implement DBHandle.getDB
-        throw new UnsupportedOperationException();
-    }
+
 
     public List<User> fillUsersList() {
         return dbConnecton.fillUsersList();
