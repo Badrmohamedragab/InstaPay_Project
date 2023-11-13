@@ -23,5 +23,4 @@ public abstract class API {
 		System.out.print("Sending OTP to this Number : " + number + "\nOTP : " + randomNumber);
 
 	}
-
 }

@@ -37,7 +37,7 @@ public class DBHandle {
         dbConnecton.decreaseBalance(user, amount);
     }
 
-    public static boolean isWalletExist(String mobileNumber) {
+    public static boolean ifWalletExist(String mobileNumber) {
         return dbConnecton.isWalletExist(mobileNumber);
     }
 
@@ -47,7 +47,8 @@ public class DBHandle {
 
     public static void addUser(User user){
         dbConnecton.addUser(user);
-    }public static boolean ifPasswordCorrect(String userName, String Password){
+    }
+    public static boolean ifPasswordCorrect(String userName, String Password){
         return dbConnecton.ifPasswordCorrect(userName,Password);
     }
 

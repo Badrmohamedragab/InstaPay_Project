@@ -5,20 +5,18 @@ import DataBase.DBHandle;
 import User.*;
 
 public abstract class Provider {
-
 	private API api;
-
 
 	/**
 	 *
 	 * @param api
 	 */
 
-	public void setApi(API api) {
+	public void setAPI(API api) {
 		this.api = api;
 	}
 
-	public API getApi() {
+	public API getAPI() {
 		return api;
 	}
 
@@ -30,7 +28,7 @@ public abstract class Provider {
 	 */
 	 public void increaseBalance(User user, double amount)
 	 {
-//		 DBHandle.increaseBalance(user, amount);
+		 DBHandle.increaseBalance(user, amount);
 		 user.getAccount().setBalance(user.getAccount().getBalance() + amount);
 	 }
 
@@ -42,9 +40,7 @@ public abstract class Provider {
 	 */
 	 public void decreaseBalance(User user, double amount)
 	 {
-//		 DBHandle.decreaseBalance(user, amount);
+		 DBHandle.decreaseBalance(user, amount);
 		 user.getAccount().setBalance(user.getAccount().getBalance() - amount);
-
 	 }
-
 }

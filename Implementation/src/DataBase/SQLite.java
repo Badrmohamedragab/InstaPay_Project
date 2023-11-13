@@ -186,12 +186,15 @@ public class SQLite implements DBConnection {
 
     public void addUser(User user) {
         String insertUser = "insert into users (username, mobile_number, balance, password, provider, account_number) values(?,?,?,?,?,?)";
+        String providerStr ;
+        Provider provider = user.getProvider() ;
+
         try (PreparedStatement statement = connection.prepareStatement(insertUser)) {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getMobileNumber());
             statement.setDouble(3, user.getBalance());
             statement.setString(4, user.getPassword());
-            statement.setString(5, user.getProvider());
+            statement.setString(5, );
             statement.setString(6, user.accountNumber());
 
             statement.executeUpdate();
