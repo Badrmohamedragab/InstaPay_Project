@@ -11,18 +11,17 @@ public class TransferToWalletAccount implements TransferToInstapayAccount {
 	 * @param to
 	 * @param amount
 	 */
-	public boolean transfer(User from, User to, double amount) {
+	public void transfer(User from, User to, double amount) {
 		if(!DBHandle.ifUserExist(to.getAccount().getUserName())){
-			return false;
+			System.err.println("Transfer field: The mobile number doesn't exist");
 		}
 		if(from.getAccount().getBalance() >= amount){
 			from.getAccount().getProvider().decreaseBalance(from,amount);
 			to.getAccount().getProvider().increaseBalance(to,amount);
-			return true;
+			System.out.println("Transfer process completed");
+			return;
 		}
-		return false;
 
+		System.err.println("Transfer field: The amount doesn't enough");
 	}
-
-
 }

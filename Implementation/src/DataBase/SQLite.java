@@ -8,17 +8,22 @@ import java.util.List;
 import java.util.Vector;
 
 public class SQLite implements DBConnection {
-    Connection connection = null;
+    Connection connection;
 
     public void initializeDB() {
-        String currentDir = java.lang.System.getProperty("user.dir");
-        String url = "jdbc:sqlite:" + currentDir + "\\identifier.sqlite";
         try {
+            String currentDir = java.lang.System.getProperty("user.dir");
+            String url = "jdbc:sqlite:" + currentDir + "\\identifier.sqlite";
             connection = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
+        catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
+    @Override
+    public String getProvider(String userName) {
+        return null;
     }
 
     public List<User> fillUsersList() {
@@ -126,7 +131,7 @@ public class SQLite implements DBConnection {
 
     public boolean isWalletExist(String mobileNumber) {
 
-        String isWalletExist = "select * from walletUsers where mobileNumber=?";
+        String isWalletExist = "select * from walletUsers where mobileNumber=" + mobileNumber;
         try (PreparedStatement statement = connection.prepareStatement(isWalletExist)) {
             statement.setString(1, mobileNumber);
             ResultSet resultSet = statement.executeQuery();

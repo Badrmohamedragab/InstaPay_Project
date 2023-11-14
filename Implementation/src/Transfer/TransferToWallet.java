@@ -12,16 +12,15 @@ public class TransferToWallet implements TransferTo {
 	 * @param to
 	 * @param amount
 	 */
-	public boolean transfer(User from, String to, double amount) {
+	public void transfer(User from, String to, double amount) {
 		if(!DBHandle.ifWalletExist(to)){
-			return false;
+			System.err.println("Transfer field: The mobile number doesn't exist");
 		}
 		if(from.getAccount().getBalance() >= amount){
 			from.getAccount().getProvider().decreaseBalance(from,amount);
-			return true;
+			System.out.println("Transfer process completed");
+			return;
 		}
-		return false;
-
+		System.err.println("Transfer field: The amount doesn't enough");
 	}
-
 }

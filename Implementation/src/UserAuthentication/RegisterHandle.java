@@ -32,13 +32,14 @@ public class RegisterHandle {
 	 *			It handle the {@code userName} of user to be unique
 	 *			and the {@code password} of the user to be strong
 	 *</pre>
-	 * @param account <strong style="color:'white'"> Represent the account will be registered</strong>
+	 * @return User <strong style="color:'white'"> The registered user</strong>
 	 */
-	public static void register(Account account) {
+	public static User register() {
 		System.out.println("================= Register Stage =================");
 		Scanner scanner = new Scanner(System.in) ;
 		String input ;
 		boolean bankAccount = false ;
+		Account account = null ;
 
 		// Provider part
 		{
@@ -51,7 +52,7 @@ public class RegisterHandle {
                     ->""");
 
 			int choice = scanner.nextInt() ;
-			while (choice > 2 || choice < 1){
+			while (choice != 2 && choice != 1){
 				System.err.print("wrong choice\n->");
 				choice = scanner.nextInt() ;
 			}
@@ -63,21 +64,21 @@ public class RegisterHandle {
                     2- Vodafone
                     ->""");
 
-				input = scanner.nextLine() ;
-				List<String> checker = Arrays.asList("Etisalat", "Vodafone");
+				choice = scanner.nextInt() ;
 
-				while (!checker.contains(input)){
+				while (choice != 2 && choice != 1){
 					System.err.print("wrong choice\n->");
-					input = scanner.nextLine() ;
+					choice = scanner.nextInt() ;
 				}
 
-				if (input.equals("Etisalat")){
+				if (choice == 1){
 					provider = new EtisalatWallet() ;
 				}
 				else{
 					provider = new VodafoneWallet() ;
 				}
 
+				account = new WalletAccount() ;
 				provider.setAPI(new WalletAPI());
 				account.setProvider(provider);
 			}
@@ -89,24 +90,24 @@ public class RegisterHandle {
                     3- CIB Bank
                     ->""");
 
-				input = scanner.nextLine() ;
-				List<String> checker = Arrays.asList("Masr Bank", "Elahly Bank", "CIB Bank");
+				choice = scanner.nextInt() ;
 
-				while (!checker.contains(input)){
+				while (choice != 2 && choice != 1 && choice != 3){
 					System.err.print("wrong choice\n->");
-					input = scanner.nextLine() ;
+					choice = scanner.nextInt() ;
 				}
 
-				if (input.equals("Masr Bank")){
+				if (choice == 1){
 					provider = new MasrBank() ;
 				}
-				else if (input.equals("Elahly Bank")){
+				else if (choice == 2){
 					provider = new ElahlyBank() ;
 				}
 				else{
 					provider = new CIBBank() ;
 				}
 
+				account = new BankAccount() ;
 				provider.setAPI(new BankAPI());
 				account.setProvider(provider);
 				bankAccount = true;
@@ -124,14 +125,13 @@ public class RegisterHandle {
 				input = scanner.nextLine() ;
 				account.setAccountNumber(input);
 			}
-			User user = new User(account) ;
 
-			if(!account.getProvider().getAPI().validate(user) && !bankAccount){
+			if(!account.getProvider().getAPI().validate(new User(account)) && !bankAccount){
 				System.err.println("Your mobile doesn't exist in the wallet provider");
-				return;
-			} else if (!account.getProvider().getAPI().validate(user)) {
+				return null;
+			} else if (!account.getProvider().getAPI().validate(new User(account))) {
 				System.err.println("Your mobile or account number doesn't exist in the bank provider");
-				return;
+				return null;
 			}
 		}
 
@@ -161,5 +161,6 @@ public class RegisterHandle {
 		account.setBalance(0);
 		User user = new User(account) ;
 		DBHandle.addUser(user);
+		return user ;
 	}
 }

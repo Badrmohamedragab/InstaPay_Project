@@ -6,6 +6,7 @@ public class BankAccount extends Account {
 
 	private String accountNumber;
 
+	public BankAccount() {}
 	public BankAccount(double balance, String password, String userName, String mobileNumber, Provider provider, String accountNumber) {
 		super(balance, password, userName, mobileNumber, provider);
 		this.accountNumber = accountNumber ;

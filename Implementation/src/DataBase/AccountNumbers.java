@@ -1,14 +1,26 @@
 package DataBase;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public class AccountNumbers {
+	private final Map<String, String> accounts;
 
-	private Map<String, String> accounts;
+	public AccountNumbers(){
+		accounts = new HashMap<>(){{
+			put("11111111111", "01123456789");
+			put("22222222222", "01098765432");
+			put("66666666666", "01234567891");
+			put("77777777777", "01122334455");
+			put("00000000000", "01112233445");
+		}};
+	}
+	public boolean ifMobileNumberLocateToAccount(String accountNumber, String mobileNumber)
+	{
+		return accounts.containsKey(accountNumber) && accounts.get(accountNumber).equals(mobileNumber);
+	}
 
-	public List<String> getAccounts() {
-		// TODO - implement AccountNumbers.getAccounts
-		throw new UnsupportedOperationException();
+	public Map<String, String> getAccounts() {
+		return accounts;
 	}
 
 	/**
@@ -16,8 +28,7 @@ public class AccountNumbers {
 	 * @param userName
 	 */
 	public String getAccountForUser(String userName) {
-		// TODO - implement AccountNumbers.getAccountForUser
-		throw new UnsupportedOperationException();
+		return accounts.get(userName) ;
 	}
 
 	/**
@@ -25,8 +36,6 @@ public class AccountNumbers {
 	 * @param userName
 	 */
 	public boolean ifAccountExist(String userName) {
-		// TODO - implement AccountNumbers.ifAccountExist
-		throw new UnsupportedOperationException();
+		return accounts.containsKey(userName) ;
 	}
-
 }

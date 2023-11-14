@@ -16,18 +16,18 @@ public class LoginHandle {
 	 *<pre>
 	 *This method {@code login} its role is register the user
 	 *It check if the {@code userName} and {@code Password}
-	 *already exist so will {@code return true}
-	 *else {@code return false}
+	 *already exist so will {@code return profile of the user}
+	 *else {@code return null}
 	 *</pre>
-	 * @param user <strong style="color:'white'"> Represent the User which will login</strong>
+	 * @param userName <strong style="color:'white'"> Represent the userName of the user</strong>
+	 * @param password <strong style="color:'white'"> Represent the password of the user</strong>
+	 * @return User    <strong style="color:'white'"> Represent the user</strong>
 	 */
-	public static User login(User user) {
-		boolean exist = false ;
-		exist = DBHandle.ifUserExist(user.getAccount().getUserName()) ;
-		exist = exist && DBHandle.ifPasswordCorrect(user.getAccount().getUserName(), user.getAccount().getPassword()) ;
+	public static User login(String userName, String password) {
+		boolean exist = DBHandle.ifUserExist(userName) && DBHandle.ifPasswordCorrect(userName, password) ;
 
 		if (exist){
-			return DBHandle.loadUser(user.getAccount().getUserName()) ;
+			return DBHandle.loadUser(userName) ;
 		}
 
 		return null ;

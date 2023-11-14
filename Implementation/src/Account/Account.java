@@ -8,6 +8,7 @@ public abstract class Account {
 	private String mobileNumber;
 	private Provider provider;
 
+	public Account() {}
 	public Account(double balance, String password, String userName, String mobileNumber, Provider provider) {
 		this.balance = balance;
 		this.password = password;

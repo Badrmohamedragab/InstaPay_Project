@@ -15,4 +15,5 @@ public interface DBConnection {
 	public boolean ifPasswordCorrect(String userName, String Password);
 	public User loadUser(String userName);
 	void initializeDB();
+	String getProvider(String userName);
 }

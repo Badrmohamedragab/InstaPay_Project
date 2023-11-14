@@ -5,7 +5,6 @@ import User.User;
 import java.util.List;
 
 public class DBHandle {
-
     private static DBConnection dbConnecton;
 
     public static DBConnection getDbConnecton() {
@@ -55,4 +54,7 @@ public class DBHandle {
         return dbConnecton.loadUser(userName);
     }
 
+    public static String getProvider(String userName) {
+        return dbConnecton.getProvider(userName) ;
+    }
 }
