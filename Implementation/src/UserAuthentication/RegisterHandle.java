@@ -134,6 +134,17 @@ public class RegisterHandle {
 				System.out.println("Your account number doesn't exist in the bank provider or doesn't related to the mobile number");
 				return null;
 			}
+			String otp ;
+			String OTPInput ;
+			do {
+				otp = account.getProvider().getAPI().sendOTP(account.getMobileNumber());
+				System.out.print("\nEnter the OTP\n->");
+				OTPInput = scanner.nextLine();
+
+				if (!otp.equals(OTPInput)){
+					System.out.println("Invalid OTP");
+				}
+			} while (!otp.equals(OTPInput));
 		}
 
 		// Username and Password part
