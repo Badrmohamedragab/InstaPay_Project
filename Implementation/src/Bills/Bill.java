@@ -13,7 +13,7 @@ import java.util.Date;
  */
 
 public abstract class Bill {
-	private final double billId;
+	private final String billId;
 	private double amount;
 	private final String meterNumber;
 	private final Date date;
@@ -29,7 +29,7 @@ public abstract class Bill {
 	 * @param date <strong style="color:'white'"> The date of the bill</strong>
 	 * @param status <strong style="color:'white'"> The status of the bill</strong>
 	 */
-	public Bill(double billId, double amount, String meterNumber, Date date, PaymentStatus status) {
+	public Bill(String billId, double amount, String meterNumber, Date date, PaymentStatus status) {
 		this.billId = billId;
 		this.amount = amount;
 		this.meterNumber = meterNumber;
@@ -73,7 +73,7 @@ public abstract class Bill {
 	 *</pre>
 	 * @return <strong style="color:'white'"> The Id of the bill</strong>
 	 */
-	public double getBillId() {
+	public String getBillId() {
 		return billId;
 	}
 

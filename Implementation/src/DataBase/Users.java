@@ -34,15 +34,12 @@ public class Users {
 	public Map<String, User> getUsers() {
 		return users;
 	}
-
     public boolean ifUserExist(String userName){
         return users.containsKey(userName) ;
     }
-
     public boolean ifPasswordCorrect(String userName, String Password){
         return users.get(userName).getAccount().getPassword().equals(Password) ;
     }
-
     public void addUser(User user) {
         users.put(user.getAccount().getUserName(), user) ;
     }

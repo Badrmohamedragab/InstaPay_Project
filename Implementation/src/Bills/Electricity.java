@@ -12,7 +12,7 @@ import java.util.Date;
  * @version <strong style="color:'white'"> 1.0</strong>
  */
 public class Electricity extends Bill {
-	public Electricity(double billId, double amount, String meterNumber, Date date, PaymentStatus status) {
+	public Electricity(String billId, double amount, String meterNumber, Date date, PaymentStatus status) {
 		super(billId, amount, meterNumber, date, status);
 	}
 

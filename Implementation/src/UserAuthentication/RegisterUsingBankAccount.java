@@ -38,7 +38,7 @@ public class RegisterUsingBankAccount implements Registration {
         System.out.println("================= Register Stage =================");
         Scanner scanner = new Scanner(System.in);
         String input;
-        Account account;
+        BankAccount account = new BankAccount();
 
         // Provider part
         {
@@ -65,7 +65,6 @@ public class RegisterUsingBankAccount implements Registration {
                 provider = new CIBBank();
             }
 
-            account = new BankAccount();
             provider.setAPI(new BankAPI());
             account.setProvider(provider);
         }

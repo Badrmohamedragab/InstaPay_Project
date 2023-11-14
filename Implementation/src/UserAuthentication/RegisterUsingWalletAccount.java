@@ -15,7 +15,7 @@ public class RegisterUsingWalletAccount implements Registration {
     public Account register() {
         System.out.println("================= Register Stage =================");
         Scanner scanner = new Scanner(System.in);
-        Account account = new WalletAccount();
+        WalletAccount account = new WalletAccount();
         Provider provider;
         System.out.print("""
                 Choose method to register

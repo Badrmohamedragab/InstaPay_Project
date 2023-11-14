@@ -1,7 +1,5 @@
 package DataBase;
-
 import User.User;
-
 import java.util.List;
 
 public class DBHandle {
@@ -11,9 +9,6 @@ public class DBHandle {
         return dbConnecton;
     }
 
-    /**
-     * @param db
-     */
     public static void setDB(DBConnection db) {
         dbConnecton=db;
     }

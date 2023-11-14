@@ -14,28 +14,7 @@ public class AccountNumbers {
 			put("00000000000", "01112233445");
 		}};
 	}
-	public boolean ifMobileNumberLocateToAccount(String accountNumber, String mobileNumber)
-	{
+	public boolean ifMobileNumberLocateToAccount(String accountNumber, String mobileNumber) {
 		return accounts.containsKey(accountNumber) && accounts.get(accountNumber).equals(mobileNumber);
-	}
-
-	public Map<String, String> getAccounts() {
-		return accounts;
-	}
-
-	/**
-	 * 
-	 * @param userName
-	 */
-	public String getAccountForUser(String userName) {
-		return accounts.get(userName) ;
-	}
-
-	/**
-	 * 
-	 * @param userName
-	 */
-	public boolean ifAccountExist(String userName) {
-		return accounts.containsKey(userName) ;
 	}
 }

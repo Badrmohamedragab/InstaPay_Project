@@ -105,15 +105,15 @@ public class InstapaySystem {
 
                     switch (select) {
                         case 1 -> {
-                            Bill bill = new Gas(3, 100, "126341", new Date(), PaymentStatus.PENDING);
+                            Bill bill = new Gas("3", 100, "126341", new Date(), PaymentStatus.PENDING);
                             BillPayment.payBill(bill, user);
                         }
                         case 2 -> {
-                            Bill bill = new Water(3, 500, "125648", new Date(), PaymentStatus.PAYED);
+                            Bill bill = new Water("3", 500, "125648", new Date(), PaymentStatus.PAYED);
                             BillPayment.payBill(bill, user);
                         }
                         case 3 -> {
-                            Bill bill = new Electricity(8, 250, "8425025", new Date(), PaymentStatus.PENDING);
+                            Bill bill = new Electricity("8", 250, "8425025", new Date(), PaymentStatus.PENDING);
                             BillPayment.payBill(bill, user);
                         }
                     }
