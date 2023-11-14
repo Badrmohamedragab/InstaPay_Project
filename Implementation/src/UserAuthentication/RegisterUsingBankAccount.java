@@ -1,13 +1,9 @@
 package UserAuthentication;
-
 import APIs.*;
 import DataBase.DBHandle;
 import User.User;
 import Account.*;
 import Provider.*;
-
-import java.util.List;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -47,8 +43,6 @@ public class RegisterUsingBankAccount implements Registration {
         // Provider part
         {
             Provider provider;
-
-
             System.out.print("""
                     Choose method to register
                     1- Masr Bank
@@ -87,8 +81,9 @@ public class RegisterUsingBankAccount implements Registration {
                 System.out.print("Type your account number\n->");
                 input = scanner.nextLine();
                 account.setAccountNumber(input);
-                if (!account.getProvider().getAPI().validate(new User(account)))
+                if (!account.getProvider().getAPI().validate(new User(account))) {
                     System.out.println("Your account number doesn't exist in the bank provider or doesn't related to the mobile number");
+                }
             } while (!account.getProvider().getAPI().validate(new User(account)));
 
 

@@ -1,14 +1,10 @@
 package InstapaySystem;
-
 import Bills.*;
-import DataBase.DBHandle;
-import DataBase.ListDB;
+import DataBase.*;
 import Transfer.*;
 import User.*;
-
 import java.util.Date;
 import java.util.Scanner;
-
 import UserAuthentication.*;
 
 public class InstapaySystem {

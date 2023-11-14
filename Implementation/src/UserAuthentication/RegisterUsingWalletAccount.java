@@ -44,8 +44,9 @@ public class RegisterUsingWalletAccount implements Registration {
             System.out.print("Type your mobile number\n->");
             input = scanner.nextLine();
             account.setMobileNumber(input);
-            if (!account.getProvider().getAPI().validate(new User(account)))
+            if (!account.getProvider().getAPI().validate(new User(account))) {
                 System.out.println("Your Mobile number doesn't exist in the Wallet provider");
+            }
         } while (!account.getProvider().getAPI().validate(new User(account)));
 
 
@@ -60,6 +61,7 @@ public class RegisterUsingWalletAccount implements Registration {
                 System.out.println("Invalid OTP");
             }
         } while (!otp.equals(OTPInput));
+
         System.out.print("Type your user name\n->");
         input = scanner.nextLine();
 
