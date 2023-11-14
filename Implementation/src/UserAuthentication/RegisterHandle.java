@@ -116,6 +116,7 @@ public class RegisterHandle {
 
 		// Check its provider part
 		{
+			scanner.nextLine() ;
 			System.out.print("Type your mobile number\n->");
 			input = scanner.nextLine() ;
 			account.setMobileNumber(input);
@@ -127,10 +128,10 @@ public class RegisterHandle {
 			}
 
 			if(!account.getProvider().getAPI().validate(new User(account)) && !bankAccount){
-				System.err.println("Your mobile doesn't exist in the wallet provider");
+				System.out.println("Your mobile doesn't exist in the wallet provider");
 				return null;
 			} else if (!account.getProvider().getAPI().validate(new User(account))) {
-				System.err.println("Your mobile or account number doesn't exist in the bank provider");
+				System.out.println("Your account number doesn't exist in the bank provider or doesn't related to the mobile number");
 				return null;
 			}
 		}
@@ -152,7 +153,7 @@ public class RegisterHandle {
 			Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 
 			while (!pattern.matcher(input).find()) {
-				System.err.print("week password\nType strong password\n->");
+				System.out.print("week password\nType strong password\n->");
 				input = scanner.nextLine();
 			}
 			account.setPassword(input);

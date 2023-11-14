@@ -23,7 +23,7 @@ public class Electricity extends Bill {
 	 */
 	@Override
 	public void showBill() {
-		System.out.println("You just paid the a Electricity bill + #" + getBillId() + "\n" +
+		System.out.println("You just paid the a Electricity bill #" + getBillId() + "\n" +
 				"The Amount -> " + getAmount() +
 				"\nThe meter -> " + getMeterNumber() +
 				"\nThe Date -> " + getDate().toString());

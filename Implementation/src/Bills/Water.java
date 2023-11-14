@@ -23,7 +23,7 @@ public class Water extends Bill {
 	 */
 	@Override
 	public void showBill() {
-		System.out.println("You just paid the a Water bill + #" + getBillId() + "\n" +
+		System.out.println("You just paid the a Water bill #" + getBillId() + "\n" +
 				"The Amount -> " + getAmount() +
 				"\nThe meter -> " + getMeterNumber() +
 				"\nThe Date -> " + getDate().toString());

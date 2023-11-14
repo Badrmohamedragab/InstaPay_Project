@@ -29,6 +29,6 @@ public class BillPayment {
 			System.out.println("\nYour balance -> " + user.getAccount().getBalance());
 		}
 
-		System.err.println("You cannot pay for this bill: your balance doesn't enough");
+		System.out.println("You cannot pay for this bill: your balance doesn't enough");
 	}
 }
