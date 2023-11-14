@@ -2,6 +2,7 @@ package Transfer;
 import Account.BankAccount;
 import Account.WalletAccount;
 import DataBase.DBHandle;
+import DataBase.Users;
 import User.User;
 
 public class TransferToBankAccount implements TransferToInstapayAccount{
@@ -15,6 +16,10 @@ public class TransferToBankAccount implements TransferToInstapayAccount{
      */
     @Override
     public void transfer(User from, User to, double amount) {
+        if(from.getAccount().getAccountNumber().equals(to.getAccount().getAccountNumber())){
+            System.out.println("You cannot transfer to yourself");
+            return;
+        }
         if(!DBHandle.ifUserExist(to.getAccount().getUserName())){
             System.out.println("Transfer field: The user doesn't exist");
             return;

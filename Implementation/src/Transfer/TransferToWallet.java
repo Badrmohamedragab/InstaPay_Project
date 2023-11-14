@@ -11,6 +11,10 @@ public class TransferToWallet implements TransferTo {
 	 * @param amount
 	 */
 	public void transfer(User from, String to, double amount) {
+		if(from.getAccount().getMobileNumber().equals(to)){
+			System.out.println("You cannot transfer to yourself");
+			return;
+		}
 		if(!DBHandle.ifWalletExist(to)){
 			System.out.println("Transfer field: The mobile number doesn't exist");
 			return;

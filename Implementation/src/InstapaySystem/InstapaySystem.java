@@ -28,7 +28,22 @@ public class InstapaySystem {
             int option = Integer.parseInt(scanner.nextLine());
 
             if (option == 1) {
-                user = RegisterHandle.register();
+                System.out.print("""
+                        Choose method to register
+                        1- Wallet
+                        2- Bank
+                        ->""");
+                Registration registration = null;
+                do {
+                    option = scanner.nextInt();
+                    switch (option) {
+                        case 1 -> registration = new RegisterUsingWalletAccount();
+                        case 2 -> registration = new RegisterUsingBankAccount();
+                        default -> System.out.println("Invalid Input");
+                    }
+                }
+                while (option != 1 && option != 2);
+                user = new User(registration.register());
             } else if (option == 2) {
                 System.out.print("Enter your userName\n->");
                 String userName = scanner.nextLine();
@@ -47,11 +62,11 @@ public class InstapaySystem {
                     """
                             1. Transfer to Wallet using the mobile number
                             2. Transfer to Another instapay account
-                            3. Inquire about his balance
+                            3. Inquire about my balance
                             4. Pay bills
                             5. exist""");
 
-            Scanner scanner = new Scanner(System.in) ;
+            Scanner scanner = new Scanner(System.in);
             int option = Integer.parseInt(scanner.nextLine());
 
             switch (option) {

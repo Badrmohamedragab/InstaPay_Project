@@ -12,6 +12,10 @@ public class TransferToWalletAccount implements TransferToInstapayAccount {
 	 * @param amount
 	 */
 	public void transfer(User from, User to, double amount) {
+		if(from.getAccount().getMobileNumber().equals(to.getAccount().getMobileNumber())){
+			System.out.println("You cannot transfer to yourself");
+			return;
+		}
 		if(!DBHandle.ifUserExist(to.getAccount().getUserName())){
 			System.out.println("Transfer field: The mobile number doesn't exist");
 			return;
