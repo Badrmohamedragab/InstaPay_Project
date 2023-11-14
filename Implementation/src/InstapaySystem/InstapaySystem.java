@@ -100,7 +100,6 @@ public class InstapaySystem {
                         case 2 -> {
                             Bill bill = new Water(3, 500, "125648", new Date(), PaymentStatus.PAYED);
                             BillPayment.payBill(bill, user);
-
                         }
                         case 3 -> {
                             Bill bill = new Electricity(8, 250, "8425025", new Date(), PaymentStatus.PENDING);
