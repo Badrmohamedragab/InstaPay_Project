@@ -4,17 +4,20 @@ import DataBase.DBHandle;
 import User.User;
 import Account.*;
 import Provider.*;
+
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
  * <pre>
- * This class {@code register} its role is register the user
+ * This class {@code RegisterUsingBankAccount} its role is register the user
+ * by bank account
  * </pre>
  * <blockquote></blockquote>
  *
  * @author <strong style="color:'white'"> Mohamed Amir</strong>
- * @version <strong style="color:'white'"> 1.0</strong>
+ * @version <strong style="color:'white'"> 1.2</strong>
  */
 public class RegisterUsingBankAccount implements Registration {
 
@@ -50,16 +53,16 @@ public class RegisterUsingBankAccount implements Registration {
                     3- CIB Bank
                     ->""");
 
-            int choice = scanner.nextInt();
+            String choice = scanner.nextLine();
 
-            while (choice != 2 && choice != 1 && choice != 3) {
+            while (!Objects.equals(choice, "2") && !Objects.equals(choice, "1") && !Objects.equals(choice, "3")) {
                 System.err.print("wrong choice\n->");
-                choice = scanner.nextInt();
+                choice = scanner.nextLine();
             }
 
-            if (choice == 1) {
+            if (choice.equals("1")) {
                 provider = new MasrBank();
-            } else if (choice == 2) {
+            } else if (choice.equals("2")) {
                 provider = new ElahlyBank();
             } else {
                 provider = new CIBBank();
@@ -77,9 +80,11 @@ public class RegisterUsingBankAccount implements Registration {
                 System.out.print("Type your mobile number\n->");
                 input = scanner.nextLine();
                 account.setMobileNumber(input);
+
                 System.out.print("Type your account number\n->");
                 input = scanner.nextLine();
                 account.setAccountNumber(input);
+
                 if (!account.getProvider().getAPI().validate(new User(account))) {
                     System.out.println("Your account number doesn't exist in the bank provider or doesn't related to the mobile number");
                 }

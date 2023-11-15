@@ -1,16 +1,41 @@
 package UserAuthentication;
-
 import APIs.*;
 import Account.*;
 import DataBase.DBHandle;
 import Provider.*;
 import User.User;
-
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * <pre>
+ * This class {@code RegisterUsingWalletAccount} its role is register the user
+ * by wallet account
+ * </pre>
+ * <blockquote></blockquote>
+ *
+ * @author <strong style="color:'white'"> Mohamed Amir</strong>
+ * @version <strong style="color:'white'"> 1.2</strong>
+ */
 public class RegisterUsingWalletAccount implements Registration {
 
+    /**
+     * <pre>
+     * This method {@code register} its role is register the user
+     * it has 3 parts
+     * 		1- <strong style="color:'white'"> Provider</strong>
+     * 			It handle the provider which user want to select
+     * 		2- 	<strong style="color:'white'"> Checking</strong>
+     * 			It handle checking the information {@code mobile Number}
+     * 			and {@code Account Bank} in the provider
+     * 		3- 	<strong style="color:'white'"> Username and Password</strong>
+     * 			It handle the {@code userName} of user to be unique
+     * 			and the {@code password} of the user to be strong
+     * </pre>
+     *
+     * @return User <strong style="color:'white'"> The registered user</strong>
+     */
     @Override
     public Account register() {
         System.out.println("================= Register Stage =================");
@@ -22,15 +47,15 @@ public class RegisterUsingWalletAccount implements Registration {
                 1- Etisalat
                 2- Vodafone
                 ->""");
-        int choice;
-        choice = scanner.nextInt();
+        String choice;
+        choice = scanner.nextLine();
 
-        while (choice != 2 && choice != 1) {
+        while (!Objects.equals(choice, "2") && !Objects.equals(choice, "1")) {
             System.err.print("wrong choice\n->");
-            choice = scanner.nextInt();
+            choice = scanner.nextLine();
         }
 
-        if (choice == 1) {
+        if (choice.equals("1")) {
             provider = new EtisalatWallet();
         } else {
             provider = new VodafoneWallet();
@@ -39,11 +64,13 @@ public class RegisterUsingWalletAccount implements Registration {
         provider.setAPI(new WalletAPI());
         account.setProvider(provider);
         scanner.nextLine();
+
         String input;
         do {
             System.out.print("Type your mobile number\n->");
             input = scanner.nextLine();
             account.setMobileNumber(input);
+
             if (!account.getProvider().getAPI().validate(new User(account))) {
                 System.out.println("Your Mobile number doesn't exist in the Wallet provider");
             }
